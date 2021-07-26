@@ -9,8 +9,16 @@
 <title>내 정보 수정</title>
 </head>
 <body>
-	<form action="userModify.do" method="post" id="userModifyForm">
-	<table>
+
+	<header>
+		<jsp:include page="/WEB-INF/jsp/header/header.jsp"></jsp:include>
+	</header>
+
+	<fieldset style='width: 750px; height: 350px; margin: auto;
+		 margin-right: 365px; margin-top: 165px; border: double;'>
+		<legend style='text-align: center; '>UserInfo</legend>
+	<form action="userModify.do" method="post" id="userModifyForm" style="text-align: center;">
+	<table style="margin: auto; margin-top: 25px; ">
 	<tr>
 			<th>이름</th>
 			<td><input type="text" name="name" required></td>
@@ -43,13 +51,15 @@
 			<td><input type="text" name="email"></td>
 		</tr>
 	</table>	
-	<div>
-		<button type="button" id="okbtn" >등록</button>
+	<div style="padding-top: 30px;">
+		<button type="button" id="okbtn" >수정</button>
 		<button type="reset">초기화</button>
 		<button type="button" id="backbtn" onclick="history.back(); return false;">이전</button>
+		<button type="button" onClick="window.location.href='${pageContext.request.contextPath }/logout.do'">로그아웃</button>
 		<button type="button" id="delbtn">회원 탈퇴</button>
 	</div>
 </form>
+</fieldset>
 <form action="userDelete.do" method="post" id="deleteForm">
 	<input type="hidden" name="id" value="${USER.userId }">
 </form>

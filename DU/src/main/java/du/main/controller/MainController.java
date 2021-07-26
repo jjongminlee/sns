@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,9 +38,19 @@ public class MainController {
 		return "login.jsp";
 	}
 	
-	@RequestMapping(value="/mainPage.do")
-	public String mainPage() {
+	@RequestMapping("/mainPage.do")
+	public String mainPage(HttpSession session) {
+		if(session.getAttribute("USER") == null) {
+			return "redirect:/loginPage.do";  //세션이 없으면 로그인 페이지로 이동
+		}
+		
 		return "main.jsp";
+	}
+	
+	@RequestMapping("/logout.do")
+	public String logout(HttpSession session) {
+		session.removeAttribute("USER");
+		return "login.jsp";
 	}
 	
 	

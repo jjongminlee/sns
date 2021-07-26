@@ -8,9 +8,11 @@
 </head>
 <body>
 
-	<h1>회원가입</h1>
+	<h1 style="text-align: center;">회원가입</h1>
 <form action="signUp.do" method="post" id="signUpForm">
-	<table>
+	<fieldset style='width: 750px; height: 350px; margin: auto; margin-right: 365px; margin-top: 165px;'>
+		<legend style='text-align: center;'>SignUP</legend>
+	<table style="margin: auto; margin-top: 45px;">
 	<tr>
 			<th>이름</th>
 			<td><input type="text" name="name" required></td>
@@ -41,18 +43,19 @@
 			<td><input type="text" name="email"></td>
 		</tr>
 	</table>	
-	<div>
+	<div style="margin: auto; margin-left: 305px; margin-top: 30px;">
 		<button type="button" id="okbtn" >등록</button>
 		<button type="reset">초기화</button>
 		<button type="button" id="backbtn" onclick="history.back(); return false;">이전</button>
 	</div>
+	</fieldset>
 </form>
 
 </body>
 
 <script>
 	window.onload = function(){
-var okbtn = document.getElementById('okbtn');
+		var okbtn = document.getElementById('okbtn');
 		
 		okbtn.onclick = function(){
 			var pwd = document.getElementById("pwdInput").value;
