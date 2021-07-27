@@ -7,6 +7,10 @@
 <title>게시글 수정</title>
 </head>
 <body>
+	<header>
+		<jsp:include page="/WEB-INF/jsp/header/header.jsp"></jsp:include>
+	</header>
+	
 	<form action="boardModify.do" method="post">
 		<input type="hidden" name="idx" value="${board.idx }"/>
 		<table>

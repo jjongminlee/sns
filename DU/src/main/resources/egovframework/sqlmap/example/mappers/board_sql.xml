@@ -29,7 +29,7 @@
 			FROM
 				tb_board B INNER JOIN tb_user U ON B.writer_id = U.user_id
 			ORDER BY
-				B.idx;
+				B.regist_date DESC;
 		]]>
 	</select>
 	
