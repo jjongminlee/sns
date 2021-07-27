@@ -3,6 +3,7 @@ package du.board.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import du.board.domain.BoardVO;
 import du.board.service.BoardService;
@@ -26,5 +27,22 @@ public class BoardController {
 		return "redirect:/mainBoard.do";
 	}
 	
+	@RequestMapping("/boardModifyPage.do")
+	public ModelAndView boardModifyPage(long idx) {
+		
+		ModelAndView mav = new ModelAndView("board/boardModify.jsp");
+		BoardVO board = boardService.selectBoard(idx);
+		
+		mav.addObject("board", board);
+				
+		return mav;
+	}
+	
+	@RequestMapping("/boardModify.do")
+	public String boardModify(BoardVO board) {
+		boardService.updateBoard(board);
+		
+		return "redirect:/mainBoard.do";
+	}
 	
 }

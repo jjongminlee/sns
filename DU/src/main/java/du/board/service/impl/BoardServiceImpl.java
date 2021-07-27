@@ -17,6 +17,12 @@ public class BoardServiceImpl implements BoardService{
 	private BoardDAO boardDAO;
 	
 	@Override
+	public BoardVO selectBoard(long idx) {
+		
+		return boardDAO.selectBoard(idx);
+	}
+	
+	@Override
 	public List<BoardVO> selectBoardList() {
 		// TODO Auto-generated method stub
 		return boardDAO.selectBoardList();
@@ -25,6 +31,12 @@ public class BoardServiceImpl implements BoardService{
 	public void insertBoard(BoardVO board) {
 		// TODO Auto-generated method stub
 		boardDAO.insertBoard(board);
+	}
+	
+	@Override
+	public void updateBoard(BoardVO board) {
+		boardDAO.updateBoard(board);
+		
 	}
 
 }
