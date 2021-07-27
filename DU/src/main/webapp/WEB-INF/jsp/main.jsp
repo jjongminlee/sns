@@ -27,7 +27,9 @@
 		</tr>
 		
 		<tr>
-			<td  style="height: 200px; text-align: center; vertical-align: middle;"><img src="images/apple.png" style="width: 200px;"/></td>
+			
+			<td  style="height: 200px; text-align: center; vertical-align: middle;"><img src="images/apple.png" 
+					onclick="window.location.href='boardModifyPage.do?idx=${item.idx}'" style="width: 200px;"/></td>
 			<td style="text-align: center; vertical-align: middle;"><c:out value="${item.content }"/></td>
 		</tr>
 		
