@@ -12,6 +12,8 @@
 			<jsp:include page="/WEB-INF/jsp/header/header.jsp"></jsp:include>
 		</header>
 		
+		<input type="hidden" name="idx" value="${board.idx }"/>
+		
 		<table border='1' class="table table-bordered" style="margin-top: 100px; table-layout: fixed; width: 50%; margin-left:auto; 
 	    		margin-right:auto; cellpadding: 0; cellspacing: 10;">
 				
@@ -27,8 +29,19 @@
 			<tr>
 				
 				<td  style="height: 200px; text-align: center; vertical-align: middle;"><img src="images/apple.png" 
-						onclick="window.location.href='boardModifyPage.do?idx=${board.idx}'" style="width: 200px;"/></td>
+						 style="width: 200px;"/></td>
+				<td>댓글 작성후 올라오는 부분</td>
+			</tr>
+			
+			<tr>
 				<td style="text-align: center; vertical-align: middle;"><c:out value="${board.content }"/></td>
+				<td>댓글 작성 하는 부분</td>
+			</tr>
+			
+			<tr>	
+				<td colspan="2" style="text-align: center;">
+					<button type="button" onclick="window.location.href='boardModifyPage.do?idx=${board.idx}'">수정</button>
+					<button type="button">삭제</button></td>
 			</tr>
 	
 		</table>
