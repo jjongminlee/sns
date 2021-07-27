@@ -25,4 +25,6 @@ public class BoardController {
 		boardService.insertBoard(board);
 		return "redirect:/mainBoard.do";
 	}
+	
+	
 }
