@@ -16,6 +16,7 @@ public class BoardController {
 	
 	@RequestMapping("/boardWritePage.do")
 	public String boardWritePage() {
+		System.out.println();
 		return "board/boardWrite.jsp";
 	}
 	
