@@ -14,8 +14,7 @@
 		<jsp:include page="/WEB-INF/jsp/header/header.jsp"></jsp:include>
 	</header>
 
-	<fieldset style='width: 750px; height: 350px; margin: auto;
-		 margin-right: 365px; margin-top: 165px; border: double;'>
+	<fieldset style='width: 750px; height: 350px; margin: auto; margin-top: 165px; border: double;'>
 		<legend style='text-align: center; '>UserInfo</legend>
 	<form action="userModify.do" method="post" id="userModifyForm" style="text-align: center;">
 	<table style="margin: auto; margin-top: 25px; ">

@@ -15,7 +15,7 @@
 	
 	
 		<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd;
-			 margin-left: auto; margin-right: auto; margin-top: 80px; margin-bottom: auto; width: 600px; height: 600px;">
+			 margin-left: auto; margin-right: auto; margin-top: 20px; margin-bottom: auto; width: 600px; height: 600px;">
 					<thead>
 						<tr>
 							<th colspan="5" style="background-color: #eeeee; text-align: center;"><h1>게시판 글쓰기 양식</h1></th>
@@ -23,14 +23,14 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td colspan="5" ><input type="text" class="form-control" placeholder="글 제목" name="title" maxlength="50" style="width: 450px;"></td>
+							<td colspan="5" ><input type="text" class="form-control" placeholder="글 제목" name="title" maxlength="50" style="width: 575px;"></td>
 						</tr>
 					
 						<tr>
-							<td colspan="5" ><textarea class="form-control" placeholder="글 내용" name="content" maxlength="2048" style="height:400px; width: 450px"></textarea></td>
+							<td colspan="5" ><textarea class="form-control" placeholder="글 내용" name="content" maxlength="2048" style="height:400px; width: 575px"></textarea></td>
 						</tr>
 						<tr>
-							<td colspan="5" ><input type="file" name="fileName"></td>
+							<td colspan="5" style="text-align: left;"><input type="file" name="fileName" ></td>
 						</tr>
 						
 						<tr>
