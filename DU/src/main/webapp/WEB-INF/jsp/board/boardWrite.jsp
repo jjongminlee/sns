@@ -7,6 +7,9 @@
 <title>게시글 작성 </title>
 </head>
 <body>
+	<header>
+		<jsp:include page="/WEB-INF/jsp/header/header.jsp"></jsp:include>
+	</header>
 	<form action="boardWrite.do" method="post">
 	<input type="hidden" name="writerId" value="${USER.userId }">
 	

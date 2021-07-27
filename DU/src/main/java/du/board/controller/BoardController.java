@@ -27,6 +27,17 @@ public class BoardController {
 		return "redirect:/mainBoard.do";
 	}
 	
+	@RequestMapping("/boardInfoPage.do")
+	public ModelAndView boardInfoPage(long idx) {
+		
+		ModelAndView mav = new ModelAndView("board/boardInfo.jsp");
+		BoardVO board = boardService.selectBoard(idx);
+		
+		mav.addObject("board", board);
+				
+		return mav;
+	}
+	
 	@RequestMapping("/boardModifyPage.do")
 	public ModelAndView boardModifyPage(long idx) {
 		
