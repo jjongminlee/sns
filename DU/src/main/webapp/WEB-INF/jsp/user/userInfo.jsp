@@ -53,7 +53,6 @@
 	</table>	
 	<div style="padding-top: 30px;">
 		<button type="button" id="okbtn" >수정</button>
-		<button type="reset">초기화</button>
 		<button type="button" id="backbtn" onclick="history.back(); return false;">이전</button>
 		<button type="button" onClick="window.location.href='${pageContext.request.contextPath }/logout.do'">로그아웃</button>
 		<button type="button" id="delbtn">회원 탈퇴</button>

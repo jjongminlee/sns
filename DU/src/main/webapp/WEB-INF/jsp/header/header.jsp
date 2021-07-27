@@ -17,7 +17,7 @@
 	<div class="logoDiv">
 
 			<img alt="로고" src="${pageContext.request.contextPath }/images/apple.png" style='width: 130px; height: 100px;'
-			onclick="window.location.href='${pageContext.request.contextPath }/mainPage.do'">
+			onclick="window.location.href='${pageContext.request.contextPath }/mainBoard.do'">
 				
 
 	</div>
@@ -31,6 +31,9 @@
 			</tr>
 				
 	</table>
+	
+	<button type="button" style='width: 45px; height: 45px; margin-top: 35px; border-radius: 150%;'
+		onclick="window.location.href='boardWritePage.do'">+</button>
 		
 	<div class="userInfoDiv" style='margin: auto; margin-right: 60px; margin-left: 60px;'>
 
