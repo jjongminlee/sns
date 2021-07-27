@@ -13,6 +13,12 @@ import egovframework.rte.psl.dataaccess.EgovAbstractMapper;
 public class BoardDAOImpl extends EgovAbstractMapper implements BoardDAO{
 
 	@Override
+	public BoardVO selectBoard(long idx) {
+		
+		return selectOne("Board.selectBoard", idx);
+	}
+	
+	@Override
 	public List<BoardVO> selectBoardList() {
 		// TODO Auto-generated method stub
 		return selectList("Board.selectBoardList");
@@ -22,6 +28,12 @@ public class BoardDAOImpl extends EgovAbstractMapper implements BoardDAO{
 	public void insertBoard(BoardVO board) {
 		// TODO Auto-generated method stub
 		insert("Board.insertBoard", board);
+	}
+	
+	@Override
+	public void updateBoard(BoardVO board) {
+		update("Board.updateBoard", board);
+		
 	}
 
 }
