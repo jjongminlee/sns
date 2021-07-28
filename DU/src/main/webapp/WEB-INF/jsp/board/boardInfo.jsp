@@ -35,7 +35,14 @@
 			
 			<tr>
 				<td style="text-align: center; vertical-align: middle;"><c:out value="${board.content }"/></td>
-				<td>댓글 작성 하는 부분</td>
+				<c:forEach items="${replyList }" var="item" varStatus="status">
+					<td data-idx="${item.idx }">
+						<span>
+							<c:out value="${item.writerName }"></c:out>
+							<c:out value="${item.content }"></c:out>
+						</span>
+					</td>
+				</c:forEach>
 			</tr>
 			<c:if test="${board.writerId == USER.userId}">
 				<tr>	
