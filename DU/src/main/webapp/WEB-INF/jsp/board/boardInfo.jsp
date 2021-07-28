@@ -95,6 +95,7 @@
 			</tr>
 			
 			<tr>
+
 				<td style=" vertical-align: middle;">[첨부파일]</td>
 				<td>
 					<form action="replyWrite.do" method="post">
@@ -104,6 +105,21 @@
 					</form>
 				</td>
 			</tr>
+
+				<td style=" vertical-align: middle;">[첨부파일]</td>
+				<td>댓글 작성 하는 부분</td>
+
+
+			</tr>
+			
+				<tr>	
+					<td colspan="2" style="text-align: center;">
+						<button type="button" id="okBtn" onclick="window.location.href='boardModifyPage.do?idx=${board.idx}'">수정</button>
+						<button type="button" id="delBtn" >삭제</button>
+					</td>
+				</tr>	
+			
+	
 		</table>
 	</body>
 	<script>
