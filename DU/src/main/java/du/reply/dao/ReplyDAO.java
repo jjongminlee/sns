@@ -6,4 +6,6 @@ import du.reply.domain.ReplyVO;
 
 public interface ReplyDAO {
 	public List<ReplyVO> selectReplyList(long boardIdx);
+	
+	public void insertReply(ReplyVO reply);
 }
