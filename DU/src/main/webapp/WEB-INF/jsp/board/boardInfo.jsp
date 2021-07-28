@@ -38,7 +38,7 @@
 							<div data-idx="${item.idx }">
 								
 								[<c:out value="${item.writerName }"></c:out>] :
-								<c:out value="${item.content }"></c:out></div></c:forEach>
+								<c:out value="${item.content }"></c:out></div></c:forEach> 
 					
 				</td>
 			</tr>
