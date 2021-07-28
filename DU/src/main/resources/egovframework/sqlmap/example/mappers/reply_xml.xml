@@ -22,4 +22,12 @@
 		]]>
 	</select>
 	
+	<insert id="insertReply" parameterType="replyMap">
+		<![CDATA[
+			INSERT INTO
+				tb_reply(board_idx, content, writer_id)
+			VALUES
+				(#{boardIdx}, #{content}, #{writerId})
+		]]>
+	</insert>
 </mapper>

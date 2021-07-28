@@ -17,4 +17,10 @@ public class ReplyDAOImpl extends EgovAbstractMapper implements ReplyDAO {
 		return selectList("Reply.selectReplyList", boardIdx);
 	}
 
+	@Override
+	public void insertReply(ReplyVO reply) {
+		insert("Reply.insertReply", reply);
+		
+	}
+
 }
