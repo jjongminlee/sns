@@ -28,30 +28,37 @@
 			
 			<tr>
 				
-				<td  style="height: 200px; text-align: center; vertical-align: middle;"><img src="images/apple.png" 
-						 style="width: 200px;"/></td>
-				<td>댓글 작성후 올라오는 부분</td>
+				<td   style="height: 200px; text-align: center; vertical-align: middle;">
+					<c:out value="${board.content }"/></td>
+				
+				<td>
+					
+						<c:forEach items="${replyList }" var="item" varStatus="status">
+						
+							<div data-idx="${item.idx }">
+								
+								[<c:out value="${item.writerName }"></c:out>] :
+								<c:out value="${item.content }"></c:out></div></c:forEach> 
+					
+				</td>
 			</tr>
 			
 			<tr>
-				<td style="text-align: center; vertical-align: middle;"><c:out value="${board.content }"/></td>
-				<c:forEach items="${replyList }" var="item" varStatus="status">
-					<td data-idx="${item.idx }">
-						<span>
-							<c:out value="${item.writerName }"></c:out>
-							<c:out value="${item.content }"></c:out>
-						</span>
-					</td>
-				</c:forEach>
+
+				<td style=" vertical-align: middle;">[첨부파일]</td>
+				<td>댓글 작성 하는 부분</td>
+
+				
+
 			</tr>
-			<c:if test="${board.writerId == USER.userId}">
+			
 				<tr>	
 					<td colspan="2" style="text-align: center;">
 						<button type="button" id="okBtn" onclick="window.location.href='boardModifyPage.do?idx=${board.idx}'">수정</button>
 						<button type="button" id="delBtn" >삭제</button>
 					</td>
 				</tr>	
-			</c:if>
+			
 	
 		</table>
 	</body>
@@ -59,8 +66,6 @@
 		window.onload = function() {
 			var okBtn = document.getElementById("okBtn");
 			var delBtn = document.getElementById("delBtn");
-			
-			if()
 			
 			delBtn.onclick = function() {
 				if(confirm("삭제하시겠습니까?")) {

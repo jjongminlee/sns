@@ -28,9 +28,22 @@
 				
 				<tr>
 					
-					<td  style="height: 200px; text-align: center; vertical-align: middle;"><img src="images/apple.png" 
-							onclick="window.location.href='boardInfoPage.do?idx=${item.idx}'" style="width: 200px;"/></td>
-					<td style="text-align: center; vertical-align: middle;"><c:out value="${item.content }"/></td>
+					<td  style="height: 200px; text-align: center; vertical-align: middle;">
+						<button type="button" class="btn btn-light" 
+							onclick="window.location.href='boardInfoPage.do?idx=${item.idx}'"
+							 style="width: 100%; height: 100%;"><c:out value="${item.content }"/></button>
+					</td>
+					
+					
+					<td style="text-align: center; vertical-align: middle;">reply place
+						
+					</td>
+					
+					
+				</tr>
+				
+				<tr>
+					<td colspan="2">[펌부파일]</td>
 				</tr>
 				 
 				

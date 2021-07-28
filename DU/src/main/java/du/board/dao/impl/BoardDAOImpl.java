@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import du.board.dao.BoardDAO;
+
 import du.board.domain.BoardVO;
 import egovframework.rte.psl.dataaccess.EgovAbstractMapper;
 
@@ -41,5 +42,23 @@ public class BoardDAOImpl extends EgovAbstractMapper implements BoardDAO{
 		delete("Board.deleteBoard", idx);
 		
 	}
+
+//	@Override
+//	public void insertBoardAttFile(BoardAttFileVO attFileVO) {
+//		// TODO Auto-generated method stub
+//		insert("Board.insertBoardAttFile", attFileVO);
+//	}
+//
+//	@Override
+//	public BoardAttFileVO selectBoardAttFile(BoardAttFileVO criteria) {
+//		// TODO Auto-generated method stub
+//		return selectOne("Board.selectBoardAttFile", criteria);
+//	}
+//
+//	@Override
+//	public void deleteBoardAttFile(BoardAttFileVO criteria) {
+//		// TODO Auto-generated method stub
+//		delete("Board.deleteBoardAttFile", criteria);
+//	}
 
 }

@@ -10,6 +10,7 @@
 	<header>
 		<jsp:include page="/WEB-INF/jsp/header/header.jsp"></jsp:include>
 	</header>
+	
 	<form action="boardWrite.do" method="post">
 	<input type="hidden" name="writerId" value="${USER.userId }">
 	
@@ -27,10 +28,11 @@
 						</tr>
 					
 						<tr>
-							<td colspan="5" ><textarea class="form-control" placeholder="글 내용" name="content" maxlength="2048" style="height:400px; width: 575px"></textarea></td>
+							<td colspan="5" ><textarea class="form-control" placeholder="글 내용" name="content" maxlength="2048"
+								 style="height:400px; width: 575px; resize: none;"></textarea></td>
 						</tr>
 						<tr>
-							<td colspan="5" style="text-align: left;"><input type="file" name="fileName" ></td>
+							<td colspan="5" style="text-align: left;"><input type="file" name="attFile" ></td>
 						</tr>
 						
 						<tr>
