@@ -34,7 +34,7 @@ public class UserController {
 	@RequestMapping("/userModify.do")
 	public String userModify(UserVO user) {
 		userService.updateUser(user);
-		return "redirect:/mainPage.do";
+		return "redirect:/mainBoard.do";
 	}
 	
 	@RequestMapping("/userDelete.do")

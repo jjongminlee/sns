@@ -13,4 +13,6 @@ public interface BoardService {
 	public void insertBoard(BoardVO board);
 	
 	public void updateBoard(BoardVO board);
+	
+	public void deleteBoard(long idx);
 }
