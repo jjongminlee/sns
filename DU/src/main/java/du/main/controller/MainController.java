@@ -67,11 +67,16 @@ public class MainController {
 	
 	
 	@RequestMapping("/mainBoard.do")
-	public ModelAndView mainBoard() {
-		ModelAndView mav = new ModelAndView("main.jsp");
-		List<BoardVO> boardList = boardService.selectBoardList();
-		mav.addObject("boardList", boardList );
-		return mav;
+	public ModelAndView mainBoard(HttpSession session) {
+		if(session.getAttribute("USER") == null) {
+			ModelAndView mav = new ModelAndView("redirect:/loginPage.do");
+			return mav;
+		} else {
+			ModelAndView mav = new ModelAndView("main.jsp");
+			List<BoardVO> boardList = boardService.selectBoardList();
+			mav.addObject("boardList", boardList );
+			return mav;
+		}
 	}
 	
 }

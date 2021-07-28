@@ -20,7 +20,7 @@
 	<table style="margin: auto; margin-top: 25px; ">
 	<tr>
 			<th>이름</th>
-			<td><input type="text" name="name" required></td>
+			<td><input type="text" name="name" value="${USER.name }" required></td>
 		</tr>
 		
 		<tr>
@@ -42,12 +42,12 @@
 		
 		<tr>
 			<th>연락처</th>
-			<td><input type="text" name="phone"></td>
+			<td><input type="text" name="phone" value="${USER.phone }"></td>
 		</tr>
 		
 		<tr>
 			<th>이메일</th>
-			<td><input type="text" name="email"></td>
+			<td><input type="text" name="email" value="${USER.email }"></td>
 		</tr>
 	</table>	
 	<div style="padding-top: 30px;">

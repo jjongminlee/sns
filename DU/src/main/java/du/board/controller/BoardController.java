@@ -56,4 +56,11 @@ public class BoardController {
 		return "redirect:/mainBoard.do";
 	}
 	
+	@RequestMapping("/boardDelete.do")
+	public String boardDelete(long idx) {
+		boardService.deleteBoard(idx);
+		
+		return "redirect:/mainBoard.do";
+	}
+	
 }

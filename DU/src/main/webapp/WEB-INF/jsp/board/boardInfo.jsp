@@ -37,13 +37,31 @@
 				<td style="text-align: center; vertical-align: middle;"><c:out value="${board.content }"/></td>
 				<td>댓글 작성 하는 부분</td>
 			</tr>
-			
-			<tr>	
-				<td colspan="2" style="text-align: center;">
-					<button type="button" onclick="window.location.href='boardModifyPage.do?idx=${board.idx}'">수정</button>
-					<button type="button">삭제</button></td>
-			</tr>
+			<c:if test="${board.writerId == USER.userId}">
+				<tr>	
+					<td colspan="2" style="text-align: center;">
+						<button type="button" id="okBtn" onclick="window.location.href='boardModifyPage.do?idx=${board.idx}'">수정</button>
+						<button type="button" id="delBtn" >삭제</button>
+					</td>
+				</tr>	
+			</c:if>
 	
 		</table>
 	</body>
+	<script>
+		window.onload = function() {
+			var okBtn = document.getElementById("okBtn");
+			var delBtn = document.getElementById("delBtn");
+			
+			if()
+			
+			delBtn.onclick = function() {
+				if(confirm("삭제하시겠습니까?")) {
+					window.location.href = "boardDelete.do?idx=${board.idx}"
+				} else {
+					return;
+				}
+			}
+		}
+	</script>
 </html>
