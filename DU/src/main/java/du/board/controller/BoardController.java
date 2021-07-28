@@ -1,5 +1,7 @@
 package du.board.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import du.board.domain.BoardVO;
 import du.board.service.BoardService;
+import du.reply.domain.ReplyVO;
+import du.reply.service.ReplyService;
 
 @Controller
 public class BoardController {
@@ -14,6 +18,9 @@ public class BoardController {
 	
 	@Autowired
 	private BoardService boardService;
+	
+	@Autowired
+	private ReplyService replyService;
 	
 	@RequestMapping("/boardWritePage.do")
 	public String boardWritePage() {
@@ -32,6 +39,9 @@ public class BoardController {
 		
 		ModelAndView mav = new ModelAndView("board/boardInfo.jsp");
 		BoardVO board = boardService.selectBoard(idx);
+		
+		List<ReplyVO> replyList = replyService.selectReplyList(idx);
+		mav.addObject("replyList", replyList);
 		
 		mav.addObject("board", board);
 				
