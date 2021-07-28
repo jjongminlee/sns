@@ -2,6 +2,8 @@ package du.board.domain;
 
 import java.time.LocalDateTime;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class BoardVO {
 
 	private long idx;
@@ -11,6 +13,11 @@ public class BoardVO {
 	private String title;
 	private LocalDateTime registDate;
 	private LocalDateTime modifyDate;
+	
+	
+	
+	
+	
 	public long getIdx() {
 		return idx;
 	}

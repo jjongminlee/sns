@@ -11,6 +11,9 @@
 		<result property="modifyDate" column="modify_date"/>
 	</resultMap>
 	
+	
+	
+	
 	<select id="selectBoard" resultMap="BoardVO" parameterType="long">
 		<![CDATA[
 			SELECT
@@ -61,4 +64,7 @@
 				idx = #{idx}
 		]]>
 	</delete>
+	
+	
+	
 </mapper>

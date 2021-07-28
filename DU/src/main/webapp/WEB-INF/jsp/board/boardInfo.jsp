@@ -28,13 +28,18 @@
 			
 			<tr>
 				
-				<td  style="height: 200px; text-align: center; vertical-align: middle;"><img src="images/apple.png" 
-						 style="width: 200px;"/></td>
-				<td>댓글 작성후 올라오는 부분</td>
+				<td   style="height: 200px; text-align: center; vertical-align: middle;">
+					<c:out value="${board.content }"/></td>
+				
+				<td>
+					<textarea name="reply" style="resize: none; width: 100%; height: 190px; overflow: auto;">
+						
+					</textarea>
+				</td>
 			</tr>
 			
 			<tr>
-				<td style="text-align: center; vertical-align: middle;"><c:out value="${board.content }"/></td>
+				<td style=" vertical-align: middle;">[첨부파일]</td>
 				<td>댓글 작성 하는 부분</td>
 			</tr>
 			<c:if test="${board.writerId == USER.userId}">
@@ -52,8 +57,6 @@
 		window.onload = function() {
 			var okBtn = document.getElementById("okBtn");
 			var delBtn = document.getElementById("delBtn");
-			
-			if()
 			
 			delBtn.onclick = function() {
 				if(confirm("삭제하시겠습니까?")) {
