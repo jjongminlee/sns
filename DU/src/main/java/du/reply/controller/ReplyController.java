@@ -19,6 +19,8 @@ public class ReplyController {
 	public String replyWrite(HttpSession session, ReplyVO reply) {
 		replyService.insertReply(session, reply);
 		
+		
+		
 		return "redirect:/boardInfoPage.do?idx="+ Long.toString(reply.getBoardIdx()) ;
 	}
 	
