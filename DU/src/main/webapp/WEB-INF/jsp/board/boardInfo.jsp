@@ -21,7 +21,6 @@
 			
 			.dropdown {
 			  position: relative;
-			  display: inline-block;
 			}
 			
 			.dropdown-content {
@@ -74,53 +73,47 @@
 				<td style="text-align: right;"><c:out value="${board.registDate }"/></td>
 			</tr>
 			
-			<tr>
+			<tr style=" height:200px; ">
 				
-				<td  style="height: 200px; text-align: center; vertical-align: middle;"><c:out value="${board.content }"/></td>
-				<td>
+				<td  style=" text-align: center; vertical-align: middle;"><c:out value="${board.content }"/></td>
+				
+				<td style="display: block; max-height: 200px; overflow-y: scroll;">
 					<c:forEach items="${replyList }" var="item" varStatus="status">
-						<div data-idx="${item.idx }">
+						<div data-idx="${item.idx }"  class="dropdown"  >
 							[<c:out value="${item.writerName }"></c:out>] : 
 							<c:out value="${item.content }"></c:out>
-						</div>
-						<div class="dropdown">
-							<button onclick="myFunction()" class="dropbtn">. . .</button>
-							<div id="myDropdown" class="dropdown-content">
-								<a href="#">수정</a>
-								<a href="#">삭제</a>
-							</div>
+							<c:if test="${item.writerId == USER.userId }">
+								<button onclick="myFunction()" class="dropbtn">. . .</button>
+								<div id="myDropdown" class="dropdown-content">
+									<a href="#" onclick="replyModify();">수정</a>
+									<a href="#" onclick="replyDelete(${item.idx});">삭제</a>
+								</div>
+							</c:if>
 						</div>
 					</c:forEach>
 				</td>
 			</tr>
 			
 			<tr>
-
 				<td style=" vertical-align: middle;">[첨부파일]</td>
-				<td>
+				<td id="replyTd">
+				
+					<!-- form 부분  script에 있는 post함수를 이용할 수 있게끔 바꿔야함 -->
 					<form action="replyWrite.do" method="post">
+					
 						<input type="hidden" name="boardIdx" value="${board.idx }" />
-						<input type="text" name="content" placeholder="댓글 작성">
-						<button type="submit">작성</button>
+						<input type="text" name="content" placeholder="댓글 작성" style="width: 80%;">
+						<button type="submit">댓글 작성</button>
 					</form>
 				</td>
 			</tr>
-
-				<td style=" vertical-align: middle;">[첨부파일]</td>
-				<td>댓글 작성 하는 부분</td>
-
-
-			</tr>
-			
-				<tr>	
-					<td colspan="2" style="text-align: center;">
-						<button type="button" id="okBtn" onclick="window.location.href='boardModifyPage.do?idx=${board.idx}'">수정</button>
-						<button type="button" id="delBtn" >삭제</button>
-					</td>
-				</tr>	
-			
-	
 		</table>
+		<form id="hiddenForm" style="display: none;" action="replyModify.do" method="post">
+			<input type="text" name="content" placeholder="댓글 수정"/>
+			<input type="hidden" name="idx" />
+			<input type="hidden" name="boardIdx" value="${board.idx }" />
+			<button type="submit">댓글 수정</button>
+		</form>
 	</body>
 	<script>
 		window.onload = function() {
@@ -136,6 +129,69 @@
 			}
 		}
 		
+		function post(path, params) {
+			const form = document.createElement('form');
+			form.method = 'post';
+			form.action = path;
+			
+			for(const key in params) {
+				if(params.hasOwnProperty(key)) {
+					const hiddenField = document.createElement('input');
+					hiddenField.type = 'hidden';
+					hiddenField.name = key;
+					hiddenField.value = params[key];
+					
+					form.appendChild(hiddenField);
+				}
+			}
+			
+			document.body.appendChild(form);
+			form.submit();
+		}
+		
+		function replyDelete(idx) {
+			if(confirm("댓글을 삭제하시겠습니까?") == true) {
+				var path = "replyDelete.do";
+				var params = {
+						"idx": idx,
+						"boardIdx": "${board.idx}"
+				};
+				post(path, params)
+			} else {
+				return;
+			}
+		}
+		
+
+		
+		function replyModify() {
+			var replyTd = document.getElementById("replyTd");
+			var dropdown = document.getElementsByClassName("dropdown");
+			
+			// +++++++++++고쳐야 할 부분++++++++++++++
+			var content = td.getElementsByTagName('span')[0].innerHTML;
+			
+			replyTd.append(makeReplyUpdateForm(dropdown.getAttribute('date-idx'), content));
+		}
+		
+		function makeReplyUpdateForm(idx, content) {
+			console.log("-----------");
+			var form = document.getElementById('hiddenForm').cloneNode(true);
+			form.style.display = '';
+			
+			var contentInput = form.getElementsByTagName("input")[0];
+			contentInput.value = content;
+			
+			var idxInput = form.getElementsByTagName("input")[1];
+			idxInput.value = idx;
+			
+			return form;
+			
+		}
+		
+		
+		
+		// 토글메뉴
 		function myFunction() {
 		  document.getElementById("myDropdown").classList.toggle("show");
 		}

@@ -19,7 +19,14 @@ public class ReplyController {
 	public String replyWrite(HttpSession session, ReplyVO reply) {
 		replyService.insertReply(session, reply);
 		
-		return "redirect:/mainBoard.do";
+		return "redirect:/boardInfoPage.do?idx="+ Long.toString(reply.getBoardIdx()) ;
+	}
+	
+	@RequestMapping("replyDelete.do")
+	public String replyDelete(long idx, ReplyVO reply) {
+		replyService.deleteReply(idx, reply);
+		
+		return "redirect:/boardInfoPage.do?idx="+ Long.toString(reply.getBoardIdx()) ;
 	}
 	
 }
