@@ -16,6 +16,8 @@ public interface BoardService {
 	
 	public void deleteBoard(long idx);
 	
+	public List<BoardVO> searchUser(String id);
+	
 //	public BoardAttFileVO findBoardAttFile(BoardAttFileVO criteria);
 //	
 //	public void deleteBoardAttFile(BoardAttFileVO criteria) throws Exception;

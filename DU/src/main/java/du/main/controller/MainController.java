@@ -79,4 +79,11 @@ public class MainController {
 		}
 	}
 	
+	@RequestMapping("/header.do")
+	public ModelAndView header(String userId) {
+		ModelAndView mav = new ModelAndView("main.jsp");
+		List<BoardVO> boardList = boardService.searchUser(userId);
+		mav.addObject("boardList", boardList );
+		return mav;
+	}
 }

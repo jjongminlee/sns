@@ -62,6 +62,12 @@ public class BoardServiceImpl implements BoardService{
 		
 	}
 
+	@Override
+	public List<BoardVO> searchUser(String id) {
+		// TODO Auto-generated method stub
+		return boardDAO.searchUser(id);
+	}
+
 //	private void updateBoardAttFile(BoardVO board) throws Exception{
 //		// TODO Auto-generated method stub
 //		String handleType = board.getHandleType();
