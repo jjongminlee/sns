@@ -73,47 +73,43 @@
 				<td style="text-align: right;"><c:out value="${board.registDate }"/></td>
 			</tr>
 			
-			<tr style=" height:200px; ">
+			<tr>
 				
-				<td  style=" text-align: center; vertical-align: middle;"><c:out value="${board.content }"/></td>
-				
+				<td  style="height: 200px; text-align: center; vertical-align: middle;"><c:out value="${board.content }"/></td>
 				<td style="display: block; max-height: 200px; overflow-y: scroll;">
-					<c:forEach items="${replyList }" var="item" varStatus="status">
-						<div data-idx="${item.idx }"  class="dropdown"  >
-							[<c:out value="${item.writerName }"></c:out>] : 
-							<c:out value="${item.content }"></c:out>
-							<c:if test="${item.writerId == USER.userId }">
-								<button onclick="myFunction()" class="dropbtn">. . .</button>
-								<div id="myDropdown" class="dropdown-content">
-									<a href="#" onclick="replyModify();">수정</a>
-									<a href="#" onclick="replyDelete(${item.idx});">삭제</a>
-								</div>
-							</c:if>
-						</div>
+					<c:forEach items="${replyList }" var="item" varStatus="status" >
+							<div data-idx="${item.idx }"  class="dropdown">
+								[<c:out value="${item.writerName }"></c:out>] : 
+								<span id="contentSpan_${item.idx }"><c:out value="${item.content }"></c:out></span>
+								<c:if test="${item.writerId == USER.userId }">
+									<button onclick="myFunction(${item.idx })" class="dropbtn" id="dropBtn_${item.idx }">. . .</button>
+									<div id="myDropdown_${item.idx }" class="dropdown-content">
+										<a href="#" onclick="replyModify(${item.idx});">수정</a>
+										<a href="#" onclick="replyDelete(${item.idx});">삭제</a>
+									</div>
+								</c:if>
+								<form action="replyModify.do" method="post">
+									<input type="hidden"name="boardIdx" value="${item.boardIdx }" />
+									<input type="hidden" id="contentInput_${item.idx}" name="content" placeholder="댓글 수정">
+									<input type="hidden" name="idx" value="${item.idx }" />
+									<button type="submit" style="display: none;" id="modifyBtn_${item.idx }">댓글 수정</button>
+								</form>
+							</div>
 					</c:forEach>
 				</td>
 			</tr>
 			
 			<tr>
 				<td style=" vertical-align: middle;">[첨부파일]</td>
-				<td id="replyTd">
-				
-					<!-- form 부분  script에 있는 post함수를 이용할 수 있게끔 바꿔야함 -->
+				<td>
 					<form action="replyWrite.do" method="post">
-					
 						<input type="hidden" name="boardIdx" value="${board.idx }" />
-						<input type="text" name="content" placeholder="댓글 작성" style="width: 80%;">
+						<input type="text" name="content" placeholder="댓글 작성">
 						<button type="submit">댓글 작성</button>
 					</form>
 				</td>
 			</tr>
 		</table>
-		<form id="hiddenForm" style="display: none;" action="replyModify.do" method="post">
-			<input type="text" name="content" placeholder="댓글 수정"/>
-			<input type="hidden" name="idx" />
-			<input type="hidden" name="boardIdx" value="${board.idx }" />
-			<button type="submit">댓글 수정</button>
-		</form>
 	</body>
 	<script>
 		window.onload = function() {
@@ -164,36 +160,24 @@
 		
 
 		
-		function replyModify() {
-			var replyTd = document.getElementById("replyTd");
-			var dropdown = document.getElementsByClassName("dropdown");
+		function replyModify(idx) {
+			console.log(idx);
+			var contentInput = document.getElementById("contentInput_" + idx);
+			var contentSpan = document.getElementById("contentSpan_" + idx);
+			var dropBtn = document.getElementById("dropBtn_" + idx);
+			var modifyBtn = document.getElementById("modifyBtn_" + idx);
 			
-			// +++++++++++고쳐야 할 부분++++++++++++++
-			var content = td.getElementsByTagName('span')[0].innerHTML;
-			
-			replyTd.append(makeReplyUpdateForm(dropdown.getAttribute('date-idx'), content));
-		}
-		
-		function makeReplyUpdateForm(idx, content) {
-			console.log("-----------");
-			var form = document.getElementById('hiddenForm').cloneNode(true);
-			form.style.display = '';
-			
-			var contentInput = form.getElementsByTagName("input")[0];
-			contentInput.value = content;
-			
-			var idxInput = form.getElementsByTagName("input")[1];
-			idxInput.value = idx;
-			
-			return form;
-			
+			contentInput.type = "text";
+			contentSpan.style.display = "none";
+			dropBtn.style.display = "none";
+			modifyBtn.style.display = "";
 		}
 		
 		
 		
 		// 토글메뉴
-		function myFunction() {
-		  document.getElementById("myDropdown").classList.toggle("show");
+		function myFunction(idx) {
+		  document.getElementById("myDropdown_" + idx).classList.toggle("show");
 		}
 		
 		window.onclick = function(event) {

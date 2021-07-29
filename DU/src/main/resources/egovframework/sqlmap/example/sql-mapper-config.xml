@@ -6,9 +6,6 @@
 		<typeAlias alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 		<typeAlias alias="userMap" type='du.user.domain.UserVO'/>
 		<typeAlias alias="boardMap" type='du.board.domain.BoardVO'/>
-
-		
-
 		<typeAlias alias="replyMap" type='du.reply.domain.ReplyVO'/>
 
     </typeAliases>
