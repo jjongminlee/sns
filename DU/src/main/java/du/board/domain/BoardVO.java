@@ -14,7 +14,10 @@ public class BoardVO {
 	private LocalDateTime registDate;
 	private LocalDateTime modifyDate;
 	
-	
+	private MultipartFile attFile;
+	private long attIdx;
+	private String attFilename;
+	private String handleType;
 	
 	
 	
@@ -60,6 +63,40 @@ public class BoardVO {
 	public void setWriterName(String writerName) {
 		this.writerName = writerName;
 	}
+	public MultipartFile getAttFile() {
+		return attFile;
+	}
+	public void setAttFile(MultipartFile attFile) {
+		this.attFile = attFile;
+	}
+	public long getAttIdx() {
+		return attIdx;
+	}
+	public void setAttIdx(long attIdx) {
+		this.attIdx = attIdx;
+	}
+	public String getAttFilename() {
+		return attFilename;
+	}
+	public void setAttFilename(String attFilename) {
+		this.attFilename = attFilename;
+	}
+	public String getHandleType() {
+		return handleType;
+	}
+	public void setHandleType(String handleType) {
+		this.handleType = handleType;
+	}
 	
+	public boolean isExistAttFile() {
+		return attFile != null && attFile.getSize() > 0;
+	}
 	
+	public boolean hasAttFile() {
+		return attIdx > 0;
+	}
+	
+	public BoardAttFileVO getCriteria() {
+		return new BoardAttFileVO(attIdx, idx);
+	}
 }

@@ -57,10 +57,10 @@
 				
 			<tr>
 				<td colspan="2">
-					[제목]<c:out value="${board.title }"/>
+					[제목] <c:out value="${board.title }"/>
 					<div style="text-align: right;">
 	                <c:if test="${board.writerId == USER.userId}">
-						<button type="button" id="okBtn" onclick="window.location.href='boardModifyPage.do?idx=${board.idx}'">수정</button>
+						<button type="button" onclick="window.location.href='boardModifyPage.do?idx=${board.idx}'">수정</button>
 						<button type="button" id="delBtn" >삭제</button>
 					</c:if>
                 </div>
@@ -100,7 +100,9 @@
 			</tr>
 			
 			<tr>
-				<td style=" vertical-align: middle;">[첨부파일]</td>
+				<td style=" vertical-align: middle;">
+					[첨부파일] <a href="#"><c:out value="${board.attFilename }"></c:out></a>
+				</td>
 				<td>
 					<form action="replyWrite.do" method="post">
 						<input type="hidden" name="boardIdx" value="${board.idx }" />
@@ -113,17 +115,22 @@
 	</body>
 	<script>
 		window.onload = function() {
-			var okBtn = document.getElementById("okBtn");
 			var delBtn = document.getElementById("delBtn");
 			
 			delBtn.onclick = function() {
-				if(confirm("삭제하시겠습니까?")) {
-					window.location.href = "boardDelete.do?idx=${board.idx}"
+				if(confirm("게시물을 삭제하시겠습니까?") == true) {
+					var path = "boardDelete.do";
+					var params = {
+							"idx" : ${board.idx},
+							"attIdx" : ${board.attIdx}
+					};
+					post(path, params);
 				} else {
 					return;
 				}
 			}
 		}
+	
 		
 		function post(path, params) {
 			const form = document.createElement('form');
@@ -158,7 +165,7 @@
 			}
 		}
 		
-
+	
 		
 		function replyModify(idx) {
 			console.log(idx);

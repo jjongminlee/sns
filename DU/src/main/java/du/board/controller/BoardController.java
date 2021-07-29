@@ -2,10 +2,13 @@ package du.board.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import du.board.domain.BoardVO;
@@ -30,8 +33,8 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/boardWrite.do")
-	public String boardWrite(BoardVO board) {
-		boardService.insertBoard(board);
+	public String boardWrite(BoardVO board, HttpSession session) throws Exception {
+		boardService.insertBoard(board, session);
 		return "redirect:/mainBoard.do";
 	}
 	
@@ -59,16 +62,16 @@ public class BoardController {
 		return mav;
 	}
 	
-	@RequestMapping("/boardModify.do")
-	public String boardModify(BoardVO board) {
-		boardService.updateBoard(board);
+	@RequestMapping(value = "/boardModify.do", method = RequestMethod.POST)
+	public String boardModify(@ModelAttribute BoardVO board, HttpSession session) throws Exception {
+		boardService.updateBoard(board, session);
 		
 		return "redirect:/mainBoard.do";
 	}
 	
 	@RequestMapping("/boardDelete.do")
-	public String boardDelete(long idx) {
-		boardService.deleteBoard(idx);
+	public String boardDelete(BoardVO board) {
+		boardService.deleteBoard(board);
 		
 		return "redirect:/mainBoard.do";
 	}
