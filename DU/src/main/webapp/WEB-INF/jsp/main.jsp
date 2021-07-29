@@ -18,11 +18,11 @@
 			<c:forEach items="${boardList }" var="item">
 				
 				<tr>
-					<td colspan="2">[제목]<c:out value="${item.title }"/></td>
+					<td colspan="2">[제목] <c:out value="${item.title }"/></td>
 				</tr>
 				
 				<tr>
-					<td><c:out value="${item.writerName }"/></td>
+					<td>[작성자] <c:out value="${item.writerName }"/></td>
 					<td style="text-align: right;"><c:out value="${item.registDate }"/></td>
 				</tr>
 				
@@ -41,11 +41,6 @@
 					
 					
 				</tr>
-				
-				<tr>
-					<td colspan="2">[펌부파일]</td>
-				</tr>
-				 
 				
 			</c:forEach>
 	

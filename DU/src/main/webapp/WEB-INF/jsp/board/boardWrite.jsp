@@ -11,7 +11,7 @@
 		<jsp:include page="/WEB-INF/jsp/header/header.jsp"></jsp:include>
 	</header>
 	
-	<form action="boardWrite.do" method="post">
+	<form action="boardWrite.do" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="writerId" value="${USER.userId }">
 	
 	
