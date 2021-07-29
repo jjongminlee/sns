@@ -25,8 +25,8 @@
 	<table style='margin: auto;'>
 			<tr>
 				
-				<td><input type="text" id="searchName" placeholder="사용자를 검색하세요!!!"
-					value="${name }" style='width: 230px; text-align: center;'></td>
+				<td><input type="text" id="searchId" placeholder="사용자를 검색하세요!!!"
+					 style='width: 230px; text-align: center;'></td>
 				<td><button type="button" id="searchBtn" class="btn btn-light" style='border-radius: 150px; background-color: chartreuse;'>검색</button></td>
 			</tr>
 				

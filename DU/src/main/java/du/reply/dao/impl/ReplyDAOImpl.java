@@ -10,7 +10,7 @@ import egovframework.rte.psl.dataaccess.EgovAbstractMapper;
 
 @Repository
 public class ReplyDAOImpl extends EgovAbstractMapper implements ReplyDAO {
-
+	
 	@Override
 	public List<ReplyVO> selectReplyList(long boardIdx) {
 		
@@ -20,6 +20,12 @@ public class ReplyDAOImpl extends EgovAbstractMapper implements ReplyDAO {
 	@Override
 	public void insertReply(ReplyVO reply) {
 		insert("Reply.insertReply", reply);
+		
+	}
+
+	@Override
+	public void deleteReply(long idx, ReplyVO reply) {
+		delete("Reply.deleteReply", idx);
 		
 	}
 
