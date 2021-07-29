@@ -22,4 +22,6 @@ public interface BoardDAO {
 //	public BoardAttFileVO selectBoardAttFile(BoardAttFileVO criteria);
 //	
 //	public void deleteBoardAttFile(BoardAttFileVO criteria);
+	
+	public List<BoardVO> searchUser(String id);
 }

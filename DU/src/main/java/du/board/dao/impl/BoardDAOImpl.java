@@ -43,6 +43,12 @@ public class BoardDAOImpl extends EgovAbstractMapper implements BoardDAO{
 		
 	}
 
+	@Override
+	public List<BoardVO> searchUser(String id) {
+		// TODO Auto-generated method stub
+		return selectList("Board.searchUser", id);
+	}
+
 //	@Override
 //	public void insertBoardAttFile(BoardAttFileVO attFileVO) {
 //		// TODO Auto-generated method stub
