@@ -28,6 +28,9 @@ public class ReplyController {
 	public String replyDelete(long idx, ReplyVO reply) {
 		replyService.deleteReply(idx, reply);
 		
+		
+		
+		
 		return "redirect:/boardInfoPage.do?idx="+ Long.toString(reply.getBoardIdx()) ;
 	}
 	
