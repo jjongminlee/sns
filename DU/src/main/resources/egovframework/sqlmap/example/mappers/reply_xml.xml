@@ -39,4 +39,15 @@
 				idx = #{value}
 		]]>
 	</delete>
+	
+	<update id="updateReply" parameterType="replyMap">
+		<![CDATA[
+			UPDATE 
+				tb_reply 
+			SET 
+				content = #{content} 
+			WHERE 
+				idx = #{idx}
+		]]>
+	</update>
 </mapper>
