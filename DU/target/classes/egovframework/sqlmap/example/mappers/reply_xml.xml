@@ -22,4 +22,32 @@
 		]]>
 	</select>
 	
+	<insert id="insertReply" parameterType="replyMap">
+		<![CDATA[
+			INSERT INTO
+				tb_reply(board_idx, content, writer_id)
+			VALUES
+				(#{boardIdx}, #{content}, #{writerId})
+		]]>
+	</insert>
+	
+	<delete id="deleteReply" parameterType="long">
+		<![CDATA[
+			DELETE FROM 
+				tb_reply
+			WHERE 
+				idx = #{value}
+		]]>
+	</delete>
+	
+	<update id="updateReply" parameterType="replyMap">
+		<![CDATA[
+			UPDATE 
+				tb_reply 
+			SET 
+				content = #{content} 
+			WHERE 
+				idx = #{idx}
+		]]>
+	</update>
 </mapper>

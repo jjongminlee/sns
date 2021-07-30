@@ -26,8 +26,8 @@
 			<tr>
 				
 				<td><input type="text" id="searchUser" placeholder="사용자를 검색하세요"
-					value="${userId }" style="text-align: center; width: 250px;"></td>
-				<td><button type="button" id="searchBtn" class="btn btn-danger" onclick="search()">검색</button></td>
+					 style="width: 250px;"></td>
+				<td><button type="button" id="searchBtn" class="btn btn-danger" >검색</button></td>
 				
 			</tr>
 				
@@ -55,24 +55,26 @@
 		var searchBtn = document.getElementById("searchBtn");
 		
 		searchUser.addEventListener("keydown", function(event){
-			if(event.keyCode === 13){
-				
-				search();
+			if(event.keyCode == 13){
+				searchBtn.click();
 			}
 		})
 		
+		searchBtn.onclick = function(){
+			if(searchUser.value == "") {
+				
+				return "${pageContext.request.contextPath }/mainBoard.do";
+			} else {
+				console.log(searchUser.value);
+				//window.location.href="header.do?userId=" + searchUser.value;
+			}
+		}
+		
 	}
 		
 	
 	
-	function search() {
-		if(searchUser.value != null) {
-			window.location.href="header.do?userId=" + searchUser.value;
-		} else {
-			
-			window.location.href="redirect:/mainBoard.do";
-		}
-	}
+	
 </script>
 </html>
 

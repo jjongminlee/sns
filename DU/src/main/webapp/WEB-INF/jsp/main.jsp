@@ -18,11 +18,11 @@
 			<c:forEach items="${boardList }" var="item">
 				
 				<tr>
-					<td colspan="2">[제목] <c:out value="${item.title }"/></td>
+					<td colspan="2">[제목]<c:out value="${item.title }"/></td>
 				</tr>
 				
 				<tr>
-					<td>[작성자] <c:out value="${item.writerName }"/></td>
+					<td><c:out value="${item.writerName }"/></td>
 					<td style="text-align: right;"><c:out value="${item.registDate }"/></td>
 				</tr>
 				
@@ -35,12 +35,24 @@
 					</td>
 					
 					
-					<td style="text-align: center; vertical-align: middle;">reply place
+					<td >
+						
+							<c:forEach items="${replyList }" var="item" varStatus="status" begin="0" end="3" step="1" >
+								<div data-idx="${item.idx }" >
+									[<c:out value="${item.writerName }"></c:out>] : 
+									<span id="contentSpan_${item.idx }"><c:out value="${item.content }"></c:out></span>
+									
+										
+								</div>
+							</c:forEach>
 						
 					</td>
 					
 					
 				</tr>
+				
+				
+				 
 				
 			</c:forEach>
 	
